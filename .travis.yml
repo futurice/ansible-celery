@@ -11,6 +11,7 @@ before_install:
 install:
   - pip install ansible
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+  - git clone https://github.com/futurice/ansible-pip.git ../ansible-pip
   - git clone https://github.com/futurice/ansible-supervisor.git ../ansible-supervisor
 
 script:
