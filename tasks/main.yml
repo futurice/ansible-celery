@@ -1,0 +1,12 @@
+---
+# TODO: pip as submodule -> notify: pip install
+- shell: "command -v pip >/dev/null 2>&1"
+  changed_when: result.rc != 0
+  register: result
+- shell: "cd /tmp && wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py"
+  when: result.rc != 0
+- pip: name=virtualenv state=latest
+- pip: name=celery state=latest virtualenv="{{ virtualenv_path }}"
+- pip: name=redis state=latest virtualenv="{{ virtualenv_path }}"
+- template: src=supervisor.conf dest={{supervisor_conf_dir}}celery_supervisor_{{app_name}}.conf
+  notify: reload and restart supervisor for project
