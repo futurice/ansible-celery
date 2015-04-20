@@ -4,7 +4,3 @@ www_root: "/var/www/"
 project_path: "{{www_root}}{{app_name}}/"
 virtualenv_path: "{{project_path}}venv/"
 current_path: "{{www_root}}{{app_name}}current"
-
-# TODO: initial values for supervisor should come from supervisor role
-supervisor_conf_dir: '/etc/supervisor/conf.d/'
-supervisor_user: "root"
