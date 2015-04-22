@@ -1,6 +1,6 @@
 ---
-- name: "Check for a file ({{inventory_dir}}/initialized) that signals this role has been installed properly"
-  local_action: stat path="{{inventory_dir}}/initialized"
+- name: "Check for a file ({{role_path}}/initialized) that signals this role has been installed properly"
+  local_action: stat path="{{role_path}}/initialized"
   register: celery_role_initialized
   ignore_errors: True
 
