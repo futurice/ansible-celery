@@ -1,6 +1,16 @@
 ---
+- name: "Check for a file ({{inventory_dir}}/initialized) that signals this role has been installed properly"
+  local_action: stat path="{{inventory_dir}}/initialized"
+  register: celery_role_initialized
+  ignore_errors: True
+
+- name: "Notify when ansible-celery has not been initialized"
+  fail: "msg='Initialize ansible-celery by running (depending where role is installed): python roles/ansible-celery/init.py'"
+  when: not celery_role_initialized.stat.exists
+
 - pip: name=virtualenv state=latest
-- pip: name=celery state=latest virtualenv="{{ virtualenv_path }}"
-- pip: name=redis state=latest virtualenv="{{ virtualenv_path }}"
+- pip: name=celery state=latest virtualenv="{{virtualenv_path}}"
+- pip: name=redis state=latest virtualenv="{{virtualenv_path}}"
+
 - template: src=supervisor.conf dest={{supervisor_conf_dir}}celery_supervisor_{{app_name}}.conf
   notify: reload and restart supervisor for project

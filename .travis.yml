@@ -5,14 +5,12 @@ python: "2.7"
 env:
   - SITE=test.yml
 
-before_install:
-  - sudo apt-get update -qq
-
 install:
   - pip install ansible
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
   - git clone https://github.com/futurice/ansible-pip.git ../ansible-pip
   - git clone https://github.com/futurice/ansible-supervisor.git ../ansible-supervisor
+  - touch initialized
 
 script:
   - "ansible-playbook -i tests/inventory tests/$SITE --syntax-check"
@@ -20,5 +18,4 @@ script:
   - >
     ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo
     | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
+    && (echo 'PASS' && exit 0) || (echo 'FAIL' && exit 1)

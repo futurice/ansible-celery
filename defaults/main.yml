@@ -1,6 +1,12 @@
 ---
-app_name: "celery"
+# TODO: use celery_app instead of app_name, with default as {{app_name}}?
+app_name: "{{app_name|default('celery')}}"
+celery_app: "{{app_name}}"
+
 www_root: "/var/www/"
 project_path: "{{www_root}}{{app_name}}/"
-virtualenv_path: "{{project_path}}venv/"
 current_path: "{{project_path}}current"
+
+virtualenv_path: "{{project_path}}venv/"
+
+celery_pid_path: "{{project_path}}shared/pids/"
