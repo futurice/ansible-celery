@@ -1,6 +1,6 @@
 ---
-# TODO: use celery_app instead of app_name, with default as {{app_name}}?
-app_name: "{{app_name|default('celery')}}"
+# could not reference global var here; append most-used vars to group_vars/all/common.yml ?
+app_name: "celery"
 celery_app: "{{app_name}}"
 
 www_root: "/var/www/"
