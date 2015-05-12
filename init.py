@@ -6,7 +6,9 @@ import random
 import sys
 import shutil
 
-parser = argparse.ArgumentParser(usage="%(prog)s [options] args...")
+parser = argparse.ArgumentParser(usage="""%(prog)s [options] args...
+Copies base celery configuration (celery.py, celeryconfig.py) to your project directory, specified using --path=X
+""")
 parser.add_argument("-v", action="append_const", const=1, dest="verbosity", default=[],
                     help="Be more verbose. Can be specified multiple times to increase verbosity further")
 parser.add_argument("--path", required=True, help="Target path for files")
