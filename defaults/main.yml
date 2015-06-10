@@ -1,5 +1,5 @@
 ---
-release_name: "celery"
-celery_app: "{{release_name}}"
+celery_app: false
+supervisor_app: "{{celery_app}}"
 
 celery_pid_path: "{{release_root}}shared/pids/"
