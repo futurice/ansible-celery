@@ -1,2 +1,17 @@
 ---
-dependencies: []
+galaxy_info:
+  author: Jussi Vaihia
+  description: Celery deployment
+  company: Futurice
+  license: BSD
+  min_ansible_version: 1.9
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  - name: Debian
+    versions:
+    - jessie
+  categories:
+    - web
+dependencies: ['futurice.pip','futurice.release','futurice.supervisor']

@@ -1,12 +1,5 @@
 ---
-# could not reference global var here; append most-used vars to group_vars/all/common.yml ?
-app_name: "celery"
-celery_app: "{{app_name}}"
+release_name: "celery"
+celery_app: "{{release_name}}"
 
-www_root: "/var/www/"
-project_path: "{{www_root}}{{app_name}}/"
-current_path: "{{project_path}}current"
-
-virtualenv_path: "{{project_path}}venv/"
-
-celery_pid_path: "{{project_path}}shared/pids/"
+celery_pid_path: "{{release_root}}shared/pids/"

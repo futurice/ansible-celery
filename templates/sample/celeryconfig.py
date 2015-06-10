@@ -2,7 +2,7 @@ from datetime import timedelta
 from kombu import Exchange, Queue
 
 BROKER_BACKEND = "redis"
-BROKER_URL = "redis://localhost:6379/0" # redis://:password@hostname:port/db_number
+BROKER_URL = "redis://localhost:6379/0"
 CELERY_RESULT_BACKEND = "redis://localhost/0"
 
 CELERY_IGNORE_RESULT = False#required as False when using TaskSet.join()
