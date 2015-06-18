@@ -1,5 +1,5 @@
 ---
 celery_app: false
-supervisor_app: "{{celery_app}}"
+supervisor_group: "{{celery_app}}"
 
 celery_pid_path: "{{release_root}}shared/pids/"
